@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scene_manager : MonoBehaviour
 {
-    public float speed;
+    public float speed = 5;
     new Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,11 @@ public class Scene_manager : MonoBehaviour
         {
             rigidbody.velocity = new Vector2(-speed, 0);
         }
-        else if (this.tag == "Floor")
+        if (this.tag == "Background")
         {
-            transform.position = new Vector3(transform.position.x - speed*0.01f, transform.position.y, transform.position.z);
-
+            transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
         }
-        
+
 
         if (transform.position.x < -10)
         {
@@ -32,10 +31,9 @@ public class Scene_manager : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            else if(this.tag == "Floor")
+            if (this.tag == "Background")
             {
-                transform.position = new Vector3(10, transform.position.y, transform.position.z);
-
+                transform.position = new Vector3(47.5f, transform.position.y, transform.position.z);
             }
 
         }

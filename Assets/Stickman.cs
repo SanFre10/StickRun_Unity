@@ -12,6 +12,7 @@ public class Stickman : MonoBehaviour
     public LayerMask groundMask;
 
     bool isGrounded = false;
+    bool isSliding = false;
     public float jumpForce = 5;
 
     // Start is called before the first frame update
@@ -24,22 +25,22 @@ public class Stickman : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isSliding = false;
         // Saltar (solo si estoy tocando el suelo)
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+            rigidBody.velocity = new Vector2(0, jumpForce);
+        }
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && isGrounded)
+        {
+            isSliding = true;
         }
 
-        mainCamera.transform.position = new Vector3(transform.position.x + 5, transform.position.y + 1, mainCamera.transform.position.z);
+        mainCamera.transform.position = new Vector3(transform.position.x + 5, mainCamera.transform.position.y, mainCamera.transform.position.z);
 
         //Control de las animaciones
-        animator.SetBool("IsRunning", isGrounded);
-
-        //Evita la rotacion por el collider tipo capsula
-        if(transform.rotation.z != 0)
-        {
-            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0,0);
-        }
+        animator.SetBool("IsJumping", rigidBody.velocity.y > 0.1);
+        animator.SetBool("IsSliding", isSliding);
     }
 
 

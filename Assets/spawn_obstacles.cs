@@ -8,12 +8,18 @@ public class spawn_obstacles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(obstaculo, transform);
+        InvokeRepeating("Spawn(obstaculo)", 2f, 2f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Spawn(GameObject obstaculo)
+    {
+        Instantiate(obstaculo, transform);
     }
 }
