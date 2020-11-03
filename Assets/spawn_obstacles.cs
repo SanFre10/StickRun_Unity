@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class spawn_obstacles : MonoBehaviour
 {
-    public GameObject obstaculo;
+    public GameObject obs1;
+    public GameObject obs12;
+    public GameObject obs13;
+    public GameObject obs14;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn(obstaculo)", 2f, 2f);
+        InvokeRepeating("Spawn", 2f, 2f);
         
     }
 
@@ -18,8 +23,8 @@ public class spawn_obstacles : MonoBehaviour
         
     }
 
-    public void Spawn(GameObject obstaculo)
+    public void Spawn()
     {
-        Instantiate(obstaculo, transform);
+        Instantiate(obs12, transform);
     }
 }

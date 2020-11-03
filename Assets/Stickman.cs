@@ -39,7 +39,7 @@ public class Stickman : MonoBehaviour
         mainCamera.transform.position = new Vector3(transform.position.x + 5, mainCamera.transform.position.y, mainCamera.transform.position.z);
 
         //Control de las animaciones
-        animator.SetBool("IsJumping", rigidBody.velocity.y > 0.1);
+        animator.SetBool("IsJumping", !isGrounded);
         animator.SetBool("IsSliding", isSliding);
     }
 
@@ -49,4 +49,7 @@ public class Stickman : MonoBehaviour
         //Chequeo del piso
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, groundMask);
     }
+
+
+
 }

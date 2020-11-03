@@ -17,7 +17,7 @@ public class Scene_manager : MonoBehaviour
     {
         if (this.tag == "Obstacle")
         {
-            rigidbody.velocity = new Vector2(-speed, 0);
+            transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
         }
         if (this.tag == "Background")
         {
@@ -33,7 +33,7 @@ public class Scene_manager : MonoBehaviour
             }
             if (this.tag == "Background")
             {
-                transform.position = new Vector3(47.5f, transform.position.y, transform.position.z);
+                transform.position = new Vector3(43.25f, transform.position.y, transform.position.z);
             }
 
         }
