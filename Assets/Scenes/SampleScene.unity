@@ -439,7 +439,7 @@ MonoBehaviour:
   obs1: {fileID: 398164234201475726, guid: 2c6b82419f14e494eb59f6f48e1baae7, type: 3}
   obs12: {fileID: 4041794215177414674, guid: d2e843e57e1d0a5418b86c00592dc23b, type: 3}
   obs13: {fileID: 2441142088157048003, guid: 35a53389ee065314aad125d2a21ff4f4, type: 3}
-  obs14: {fileID: 0}
+  obs14: {fileID: 7359326544185578594, guid: 339a50ff5545fbf48911a6ed34ba1e3f, type: 3}
 --- !u!4 &1443010412
 Transform:
   m_ObjectHideFlags: 0
