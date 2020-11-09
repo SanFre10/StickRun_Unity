@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Floor
   - Background
+  - Sierra
+  - Caja
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - Floor
   - Player
-  - 
+  - Box_floor
   - 
   - 
   - 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Stickman : MonoBehaviour
@@ -10,6 +11,7 @@ public class Stickman : MonoBehaviour
     Animator animator;
     public Transform groundCheck;
     public LayerMask groundMask;
+    public LayerMask boxMask;
 
     bool isGrounded = false;
     bool isSliding = false;
@@ -39,7 +41,7 @@ public class Stickman : MonoBehaviour
         mainCamera.transform.position = new Vector3(transform.position.x + 5, mainCamera.transform.position.y, mainCamera.transform.position.z);
 
         //Control de las animaciones
-        animator.SetBool("IsJumping", !isGrounded);
+        animator.SetBool("IsJumping", rigidBody.velocity.y > 0.1);
         animator.SetBool("IsSliding", isSliding);
     }
 
@@ -48,6 +50,20 @@ public class Stickman : MonoBehaviour
     {
         //Chequeo del piso
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, groundMask);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Sierra")
+        {
+            EditorApplication.isPlaying = false;
+        }
+        //else if(col.gameObject.tag == "Caja")
+        //{
+        //    if(!Physics2D.OverlapCircle(groundCheck.position, 0.02f, boxMask)){
+        //        EditorApplication.isPlaying = false;
+        //    }
+        //}
     }
 
 

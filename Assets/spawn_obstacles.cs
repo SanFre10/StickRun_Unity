@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class spawn_obstacles : MonoBehaviour
 {
-    public GameObject obs1;
-    public GameObject obs12;
-    public GameObject obs13;
-    public GameObject obs14;
-
-
+    public System.Random rnd = new System.Random();
+    public GameObject[] obs0;
+    public GameObject[] obs1;
+    public List <GameObject[]> allobs;
+    public (int,int) current;
     // Start is called before the first frame update
     void Start()
     {
+        current=(rnd.Next(0,1),-1);
+        allobs=new List<GameObject[]>(){
+            obs0,
+            obs1
+        };
         InvokeRepeating("Spawn", 2f, 2f);
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Spawn()
     {
-        Instantiate(obs12, transform);
+        //Decide si seguir con la progresion actual de prefabs o empezar de nuevo
+        if(rnd.Next(0,2)==1){
+            current=(current.Item1,current.Item2 == 2 ? 0 : current.Item2+1);
+        }else{
+            current=(rnd.Next(0,2),0);
+        }
+        GameObject obj = Instantiate(allobs[current.Item1][current.Item2], transform);
+        Destroy(obj, 20);
     }
 }
