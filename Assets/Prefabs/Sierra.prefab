@@ -111,12 +111,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2441142088157048003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e69dcaf732fde04a908a3b2b86a7a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  Jugador: {fileID: 0}
 --- !u!58 &-6477847530212131328
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1002598483028944235}
   - component: {fileID: -8538117317389183525}
   - component: {fileID: 9069159633343496310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wooden_crate
   m_TagString: Caja
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -117,8 +117,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398164234201475726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e69dcaf732fde04a908a3b2b86a7a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Jugador: {fileID: 0}

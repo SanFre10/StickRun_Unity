@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class spawn_obstacles : MonoBehaviour
 {
+    public Stickman jugador;
     public System.Random rnd = new System.Random();
     public GameObject[] obs0;
     public GameObject[] obs1;
@@ -30,6 +31,7 @@ public class spawn_obstacles : MonoBehaviour
             current=(rnd.Next(0,2),0);
         }
         GameObject obj = Instantiate(allobs[current.Item1][current.Item2], transform);
-        Destroy(obj, 20);
+        obj.GetComponent<Scene_manager>().Jugador = jugador;
+        Destroy(obj, 15);
     }
 }

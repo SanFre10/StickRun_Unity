@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class Stickman : MonoBehaviour
 {
-    public Camera mainCamera;
     Rigidbody2D rigidBody;
     Animator animator;
     public Transform groundCheck;
     public LayerMask groundMask;
     public LayerMask boxMask;
 
+    public bool OutOfFrame = false;
     bool isGrounded = false;
     bool isSliding = false;
     public float jumpForce = 5;
@@ -33,12 +33,29 @@ public class Stickman : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(0, jumpForce);
         }
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && isGrounded)
+        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && isGrounded)
         {
             isSliding = true;
         }
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            rigidBody.velocity = new Vector2(-3f, rigidBody.velocity.y);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            rigidBody.velocity = new Vector2(3f, rigidBody.velocity.y);
+        }
 
-        mainCamera.transform.position = new Vector3(transform.position.x + 5, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        if(transform.position.x < -11)
+        {
+            OutOfFrame = true;
+        }
+        else
+        {
+            OutOfFrame = false;
+        }
+
+        //mainCamera.transform.position = new Vector3(transform.position.x + 5, mainCamera.transform.position.y, mainCamera.transform.position.z);
 
         //Control de las animaciones
         animator.SetBool("IsJumping", rigidBody.velocity.y > 0.1);

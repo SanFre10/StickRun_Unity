@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-
 
 public class Scene_manager : MonoBehaviour
 {
-    float speed = 0.05f;
+    public Stickman Jugador;
+    float speedR = 5;
     new Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,15 @@ public class Scene_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Jugador != null)
+        {
+            if (Jugador.OutOfFrame)
+            {
+                EditorApplication.isPlaying = false;
+            }
+        }
+        float speed = speedR * Time.deltaTime;
+
         if (this.tag == "Obstacle" || this.tag == "Sierra" || this.tag == "Caja")
         {
             transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
@@ -44,6 +54,6 @@ public class Scene_manager : MonoBehaviour
     }
     void SpeedUp()
     {
-        speed += 0.001f;
+        speedR += 0.1f;
     }
 }
