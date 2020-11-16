@@ -12,13 +12,14 @@ public class Scene_manager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        InvokeRepeating("SpeedUp", 2f, 2f);
+        InvokeRepeating("SpeedUp", 1f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
         float speed = speedR * Time.deltaTime;
+        Debug.Log(speed);
 
         if (this.tag == "Obstacle" || this.tag == "Sierra" || this.tag == "Caja")
         {
@@ -42,11 +43,9 @@ public class Scene_manager : MonoBehaviour
             }
 
         }
-        
-
     }
     void SpeedUp()
     {
-        speedR += 0.1f;
+        speedR += 1f;
     }
 }
